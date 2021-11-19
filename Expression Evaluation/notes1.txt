@@ -1,0 +1,63 @@
+if(x.contains("+ - / *")) {
+    				if(read.next().equals("(")){
+    					vars.add(new Variable(temp));
+    					x = read.next();
+    					temp = ""; continue;
+    				}else {
+    					vars.add(new Variable(temp));
+    					temp = ""; continue;
+    				}
+    					
+    			}
+    			if(x.equals("(")) { //if ( is found, then add the
+    				Variable var = new Variable(temp);
+    				vars.add(var);
+    				temp = "";
+    				continue;
+    				
+    			}else if(x.equals("[")) {
+    				
+    			}
+    			
+    		
+    		}else if(x.contains(number)) { //if next line is a number
+    			continue;
+    			
+    			-------------------------------------------------------------------
+    			
+    			/*while(true) {
+    		checker = Character.toString(expr.charAt(i));
+    		
+    		if(vars.isEmpty() && arrays.isEmpty()) { //if expression is solely numeric math
+    			
+    			if(i==expr.length()) { //evaluation process
+        			
+    				a = operand.pop();
+        			if(operand.isEmpty()) {
+        				return a;
+        			}else
+        			b = operand.pop();
+        			op1 = operator.pop();
+        			
+        			switch (op1) {
+        			case "+":
+        				answer.push(a + b);
+        			case "-":
+        				answer.push(a-b);
+        			case "*":
+        				answer.push(a*b);
+        			case "/":
+        				answer.push(a/b);
+        			}
+        		
+        		}
+    			if(checker.matches(numbers)) {
+    				x = Float.parseFloat(checker);
+    				operand.push(x); i++; x=0; continue;
+    		
+    			}else if(String.valueOf(checker).matches(operators)) {
+    				operator.push(checker); i++; continue;
+    			}
+    		}
+    		
+    	}*/

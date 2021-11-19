@@ -1,0 +1,71 @@
+ans.firstChild = new TagNode(x,null,null);
+				ans = ans.firstChild; tagcount = 0;
+				continue;
+
+
+x = sc.nextLine();
+			
+			if(isTag(x)) { //if x is a tag
+				if(x.charAt(1)=='/') { //if x is a closing tag
+					continue;
+				}else {
+					x = x.replace("<", ""); x = x.replace(">", "");
+					ans.firstChild = new TagNode(x,null,null);
+					ptr = ans;
+					ans = ans.firstChild;
+					tagcount++;
+				}
+				if(tagcount>=2) { 
+					temp = sc.nextLine();
+					if(isTag(temp)) { //if temp is a tag
+						temp = temp.replace('<', ' '); temp = temp.replace('>', ' ');
+						
+					}
+					if(!isTag(prev))	//if the previous scanner input is a tag;
+						ans.sibling = new TagNode(temp,null,null);
+						ptr = ans;
+						ans = ans.sibling;
+						continue;
+				}else {
+					continue;
+				}
+			}else { //non-tag nodes
+				ans.firstChild = new TagNode(x,null,null);
+				ptr = ans;
+				ans = ans.firstChild;
+				tagcount = 0;
+				continue;
+			}
+		}	
+
+TagNode ans = new TagNode("html",null,null);
+		TagNode ptr = null;
+		root = ans;
+		
+		String text = sc.nextLine();
+		
+		while(sc.hasNext()) {
+			
+			if(!sc.hasNext()) {
+				return;
+			}
+			
+			text = sc.nextLine();
+			
+			if(text.charAt(0)=='<') { //if text is a tag
+				if(text.charAt(1)=='/') { //if text is a closing tag
+					continue;
+				}
+				text = text.replace("<", ""); text = text.replace(">", "");
+				
+					ans.firstChild = new TagNode(text,null,null);
+					ans = ans.firstChild;
+					continue;
+			}else {
+				ans.firstChild = new TagNode(text,null,null);
+				ans = ans.firstChild;
+				continue;
+			}
+				
+			
+		}

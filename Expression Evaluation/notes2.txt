@@ -1,0 +1,65 @@
+if(vars.isEmpty() && arrays.isEmpty()) { //for expression inputs containing only constants and operators
+    		if(expr.contains("+")||expr.contains("*")||expr.contains("/")||expr.contains("-")){ //for expressions with operators and constants ex: 2+2
+				while(true) {
+					if(i==expr.length()) {
+						if(temp.equals("")) {
+		    				break;
+		    				
+		    			}else {
+		    				operand.push(Float.parseFloat(temp));
+		    				
+		    				return evaluator(expr,0,0,operator,operand);
+    			}
+					}
+					checker = Character.toString(expr.charAt(i));
+					
+					if(checker.matches(numbers)) {
+						temp += checker;
+						i++; continue;
+    				
+					}else if(checker.equals("+") || checker.equals("*") || checker.equals("-") || checker.equals("/") || checker.equals("(")) { //implement this outside of the loop
+						
+						operand.push(Float.parseFloat(temp));														//to make checking easier. ie; if operator stack is emnpty; do this
+						operator.push(checker);
+						i++; temp=""; continue;
+						
+					}else if(checker.equals(")")) {  //once reaches a sub expression, evaluate
+						
+							evaluator(expr,0,0,operator,operand);
+						
+					}
+					
+				}
+			}else {	//for expression inputs only containing constants. ex: 1234
+				return Float.parseFloat(expr);
+			}
+    	}
+    	
+    	
+    	else if((arrays.isEmpty() && !vars.isEmpty())) { //for single variable inputs, given a file containing values. ex: varx
+    		return (float)(vars.get(0).value);            //if stack size is < 2
+    		}
+    	
+    	
+    	return 0;
+    }
+
+
+EVALUATOR COD
+
+
+if(operand.isEmpty()) {
+				return ans;
+			}else {		
+				a = operand.pop();
+				op = operator.pop();
+				while(PEMDAS(op,operator.peek())==true)
+					if(a!=0 && operand.isEmpty()) { //for uneven expressions. ex 2+4*5
+							b = ans;
+							ans = (operation(op,a,b));
+						}else {
+							b = operand.pop();
+							ans += (operation(op,a,b));
+						}
+					}
+				}
